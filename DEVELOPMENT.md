@@ -69,3 +69,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
     "private": false,
 ```
 
+## Testing
+
+```
+// oauth2/package.json
+"test": "CHROME_BIN=/snap/bin/brave ng test",
+"test:ci": "CHROME_BIN=/snap/bin/brave ng test --no-watch  --no-progress --browsers=ChromeHeadless --code-coverage",
+```
+

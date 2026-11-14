@@ -6,7 +6,8 @@
         "start": "ng serve",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
-        "test": "ng test",
+        "test": "CHROME_BIN=/snap/bin/brave ng test",
+        "test:ci": "CHROME_BIN=/snap/bin/brave ng test --no-watch  --no-progress --browsers=ChromeHeadless --code-coverage",
         "test:license01": "find $(find projects -depth -name 'src' | grep -v node_modules) -name '*.ts'  -exec grep -L \"^ \\* Copyright (c) 2026 Manuel García Criado\" {} \\;",
         "test:license02": "find $(find projects -depth -name 'src' | grep -v node_modules) -name '*.ts'  -exec grep -L \"^ \\* SPDX-License-Identifier: MIT\" {} \\;",
         "test:license03": "find . -name 'README.md' -not -path '*/node_modules/*'  -exec grep -L \"^This project is licensed under the MIT License - see the \\[LICENSE\\](LICENSE) file for details\\.\" {} \\;"
