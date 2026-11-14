@@ -1,12 +1,27 @@
 {
-  "name": "ngx-oauth2-oidc",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/common": "^18.2.0",
-    "@angular/core": "^18.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "ngx-oauth2-oidc",
+    "version": "0.0.1",
+    "author": "Manuel García Criado <manuel.garcia.cr@hotmail.com>",
+    "description": "Angular Service for Oauth2.0 + PKCE + OIDC",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/manuelgarciacr/oauth2.git"
+    },
+    "homepage": "https://www.npmjs.com/package/ngx-oauth2-oidc",
+    "keywords": [
+        "oauth2",
+        "PKCE",
+        "OIDC",
+        "auth"
+    ],
+    "private": false,
+    "sideEffects": false,
+    "peerDependencies": {
+        "@angular/common": "^18.2.0",
+        "@angular/core": "^18.2.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    }
 }
