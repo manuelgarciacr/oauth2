@@ -1,0 +1,43 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-oauth2-oidc": {
+      "projectType": "library",
+      "root": "projects/ngx-oauth2-oidc",
+      "sourceRoot": "projects/ngx-oauth2-oidc/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-oauth2-oidc/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-oauth2-oidc/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-oauth2-oidc/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ngx-oauth2-oidc/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "305acb77-6bf9-44f2-aaa5-a1a8ad83ee3d"
+  }
+}
