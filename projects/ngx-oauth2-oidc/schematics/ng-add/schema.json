@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "SchematicsNgxOauth2OidcNgAdd",
+    "title": "NgxOauth2Oidc ng add Schema",
+    "type": "object",
+    "properties": {
+        "project": {
+            "type": "string",
+            "description": "Name of the project.",
+            "$default": {
+                "$source": "projectName"
+            }
+        }
+    }
+}

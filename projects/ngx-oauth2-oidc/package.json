@@ -10,6 +10,7 @@
     },
     "homepage": "https://www.npmjs.com/package/ngx-oauth2-oidc",
     "keywords": [
+        "schematics",
         "oauth2",
         "PKCE",
         "OIDC",
@@ -17,6 +18,15 @@
     ],
     "private": false,
     "sideEffects": false,
+    "schematics": "./schematics/collection.json",
+    "scripts": {
+        "build": "rm -r ../../dist/ngx-oauth2-oidc && tsc -p tsconfig.schematics.json",
+        "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/ngx-oauth2-oidc/",
+        "test": "npm run build && jasmine ../../dist/ngx-oauth2-oidc/schematics/**/*_spec.js"
+    },
+    "ng-add": {
+        "save": "dependencies"
+    },
     "peerDependencies": {
         "@angular/common": "^18.2.0",
         "@angular/core": "^18.2.0"

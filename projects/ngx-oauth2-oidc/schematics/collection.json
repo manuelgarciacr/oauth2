@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "ng-add": {
+            "description": "Add ngx-oauth2-oidc to the project.",
+            "factory": "./ng-add/index#ngAdd",
+            "schema": "./ng-add/schema.json"
+        },
+        "ng-schematic": {
+            "description": "A blank schematic.",
+            "factory": "./ng-schematic/index#ngSchematic"
+        }
+    }
+}
