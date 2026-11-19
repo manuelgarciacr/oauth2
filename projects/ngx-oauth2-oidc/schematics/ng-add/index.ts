@@ -3,34 +3,38 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { isStandaloneApp } from "@schematics/angular/utility/ng-ast-utils";
-import { getMainFilePath } from "@schematics/angular/utility/standalone/util";
 import {
-    addRootImport,
     addRootProvider,
 } from "@schematics/angular/utility/standalone/rules";
+import { getMainFilePath } from "@schematics/angular/utility/standalone/util";
+import { isStandaloneApp } from "@schematics/angular/utility/ng-ast-utils";
 import { Rule, Tree, SchematicContext } from "@angular-devkit/schematics";
 import { Schema } from "./schema";
 
 export function ngAdd(options: Schema): Rule {
-    return async (tree: Tree, _context: SchematicContext) => {
-        const mainFile = await getMainFilePath(tree, options.project); // ← async
+    return async (tree: Tree, context: SchematicContext) => {
 
-        if (isStandaloneApp(tree, mainFile)) {
-            return addRootProvider(
-                options.project,
-                ({ code, external }) =>
-                    code`${external("provideNgxOauth2OidcOidc", "ngx-oauth2-oidc")}()`,
+        const mainFile = await getMainFilePath(tree, options.project);
+        const isStandalone = isStandaloneApp(tree, mainFile);
+
+        // Leer el archivo donde addRootProvider escribiría
+        const targetFile = isStandalone
+            ? `${mainFile.replace("main.ts", "app/app.config.ts")}`
+            : `${mainFile.replace("main.ts", "app/app.module.ts")}`;
+
+        const content = tree.readText(targetFile) ?? "";
+
+        if (content.includes("provideOAuth2(")) {
+            context.logger.info(
+                `👁️  "${targetFile}": provideOAuth2 already registered.`,
             );
-        } else {
-            return addRootImport(
-                options.project,
-                ({ code, external }) =>
-                    code`${external("NgxOauth2OidcModule", "ngx-oauth2-oidc")}`,
-            );
+            return;
         }
+
+        return addRootProvider(
+            options.project,
+            ({ code, external }) =>
+                code`${external("provideOAuth2", "ngx-oauth2-oidc")}()`,
+        );
     };
 }
-// function addRootProvider(project: string, arg1: ({ code, external }: { code: any; external: any; }) => any): void | Rule | PromiseLike<void | Rule> {
-//   throw new Error("Function not implemented.");
-// }

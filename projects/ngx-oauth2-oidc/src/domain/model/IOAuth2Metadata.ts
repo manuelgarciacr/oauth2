@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2026 Manuel García Criado
+ * SPDX-License-Identifier: MIT
+ *
+ * Public API Surface of ngx-oauth2-oidc
+ */
+
 import { urlType } from "..";
 
 /** Metadata section object */
@@ -7,7 +14,8 @@ const metadata = {
     authorization_endpoint: "" as urlType, // URL of the authorization server's authorization endpoint	IESG	[RFC8414, Section 2]
     authorization_response_iss_parameter_supported: false, // Boolean value indicating whether the authorization server provides the iss parameter in the authorization response.	IETF	[RFC9207, Section 3]
     backchannel_authentication_endpoint: "" as urlType, // CIBA Backchannel Authentication Endpoint	[OpenID_Foundation_MODRNA_Working_Group]	[OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0, Section 4]
-    backchannel_authentication_request_signing_alg_values_supported: [] as string[], // JSON array containing a list of the JWS signing algorithms supported for validation of signed CIBA authentication requests	[OpenID_Foundation_MODRNA_Working_Group]	[OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0, Section 4]
+    backchannel_authentication_request_signing_alg_values_supported:
+        [] as string[], // JSON array containing a list of the JWS signing algorithms supported for validation of signed CIBA authentication requests	[OpenID_Foundation_MODRNA_Working_Group]	[OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0, Section 4]
     backchannel_logout_session_supported: false, // Boolean value specifying whether the OP can pass a sid (session ID) Claim in the Logout Token to identify the RP session with the OP	[OpenID_Foundation_Artifact_Binding_Working_Group]	[OpenID Connect Back-Channel Logout 1.0, Section 2]
     backchannel_logout_supported: false, // Boolean value specifying whether the OP supports back-channel logout, with true indicating support	[OpenID_Foundation_Artifact_Binding_Working_Group]	[OpenID Connect Back-Channel Logout 1.0, Section 2]
     backchannel_token_delivery_modes_supported: [] as string[], // Supported CIBA authentication result delivery modes	[OpenID_Foundation_MODRNA_Working_Group]	[OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0, Section 4]
@@ -69,10 +77,9 @@ const metadata = {
     userinfo_encryption_enc_values_supported: [] as string[], // JSON array containing a list of the JWE "enc" values supported by the UserInfo Endpoint	[OpenID_Foundation_Artifact_Binding_Working_Group]	[OpenID Connect Discovery 1.0, Section 3]
     userinfo_endpoint: "" as urlType, // URL of the OP's UserInfo Endpoint	[OpenID_Foundation_Artifact_Binding_Working_Group]	[OpenID Connect Discovery 1.0, Section 3]
     userinfo_signing_alg_values_supported: [] as string[], // JSON array containing a list of the JWS "alg" values supported by the UserInfo Endpoint	[OpenID_Foundation_Artifact_Binding_Working_Group]	[OpenID Connect Discovery 1.0, Section 3]
-}
+};
 
 export const metadataNames = Object.keys(metadata);
 
 /** Metadata section type */
-export interface IOAuth2Metadata extends Partial<typeof metadata> {};
-
+export interface IOAuth2Metadata extends Partial<typeof metadata> {}

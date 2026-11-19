@@ -1,23 +1,30 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { IOAuth2Data } from '../domain';
+/**
+ * Copyright (c) 2026 Manuel García Criado
+ * SPDX-License-Identifier: MIT
+ *
+ * Public API Surface of ngx-oauth2-oidc
+ */
 
-export const OAUTH2_DATA_TOKEN = new InjectionToken<IOAuth2Data>(
-    "OAuth2 Data",
+import { Inject, Injectable, InjectionToken } from "@angular/core";
+import { IOAuth2Config } from "../domain";
+
+export const OAUTH2_CONFIG_TOKEN = new InjectionToken<IOAuth2Config>(
+    "OAuth2 Config",
 );
 
 @Injectable({
     providedIn: "root",
 })
 export class Oauth2Service {
-    private _data: IOAuth2Data = {};
+    private _config: IOAuth2Config = {};
 
     constructor(
-        @Inject(OAUTH2_DATA_TOKEN) protected oauth2Data?: IOAuth2Data
+        @Inject(OAUTH2_CONFIG_TOKEN) protected oauth2Config?: IOAuth2Config,
     ) {
-        this.setData(oauth2Data ?? {})
+        this.setConfig(oauth2Config ?? {});
     }
 
-    setData = (oauth2Data: IOAuth2Data) => {
-        this._data = oauth2Data;
-    }
+    setConfig = (oauth2Config: IOAuth2Config) => {
+        this._config = oauth2Config;
+    };
 }

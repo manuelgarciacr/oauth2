@@ -11,7 +11,14 @@
         "test:schematics": "npm --prefix projects/ngx-oauth2-oidc run test",
         "test:license01": "year=$(date +%Y) && find $(find projects -depth \\( -name 'src' -o -name 'schematics' \\) -type d | grep -v node_modules) -name '*.ts'  -exec grep -LE \"^ \\* Copyright \\(c\\) ($year|[0-9]{4}-$year) Manuel García Criado\" {} \\;",
         "test:license02": "find $(find projects -depth \\( -name 'src' -o -name 'schematics' \\) -type d | grep -v node_modules) -name '*.ts'  -exec grep -L \"^ \\* SPDX-License-Identifier: MIT\" {} \\;",
-        "test:license03": "find . -name 'README.md' -not -path '*/node_modules/*'  -exec grep -L \"^This project is licensed under the MIT License - see the \\[LICENSE\\](LICENSE) file for details\\.\" {} \\;"
+        "test:license03": "find . -name 'README.md' -not -path '*/node_modules/*'  -exec grep -L \"^This project is licensed under the MIT License - see the \\[LICENSE\\](LICENSE) file for details\\.\" {} \\;",
+        "=============== sandbox test =======================": "",
+        "sandbox:test": "npm run sandbox:recreate && ng add ngx-oauth2-oidc --project sandbox-mod --skip-confirmation && ng add ngx-oauth2-oidc --project sandbox-sta --skip-confirmation && ng add ngx-oauth2-oidc --project sandbox-mod --skip-confirmation",
+        "sandbox:recreate": "npm run sandbox:link && npm run sandbox:sta:recreate && npm run sandbox:mod:recreate",
+        "sandbox:link": "npm run sandbox:build && npm i file:./dist/ngx-oauth2-oidc",
+        "sandbox:build": "npm run build ngx-oauth2-oidc && npm --prefix projects/ngx-oauth2-oidc run build",
+        "sandbox:sta:recreate": "./removeProject.sh sandbox-sta && ng g application sandbox-sta --style scss --no-ssr --force",
+        "sandbox:mod:recreate": "./removeProject.sh sandbox-mod && ng g application sandbox-mod --style scss --no-ssr --no-standalone --force"
     },
     "private": true,
     "dependencies": {
@@ -23,6 +30,7 @@
         "@angular/platform-browser": "^18.2.0",
         "@angular/platform-browser-dynamic": "^18.2.0",
         "@angular/router": "^18.2.0",
+        "ngx-oauth2-oidc": "file:dist/ngx-oauth2-oidc",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.14.10"

@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "SchematicsNgxOauth2OidcNgAdd",
-    "title": "NgxOauth2Oidc ng add Schema",
+    "$id": "SchematicsNgAdd",
+    "title": "ng-add Schema",
     "type": "object",
     "properties": {
         "project": {
@@ -10,6 +10,22 @@
             "$default": {
                 "$source": "projectName"
             }
+        },
+        "loginComponent": {
+            "type": "string",
+            "description": "Name of the login component class name."
+        },
+        "skipInstall": {
+            "description": "Skip the automatic installation of packages. You will need to manually install the dependencies later.",
+            "type": "boolean",
+            "default": false
+        },
+        "path": {
+            "type": "string",
+            "format": "path",
+            "description": "The path to create the simple schematic within.",
+            "visible": false
         }
-    }
+    },
+    "required": ["project"]
 }

@@ -1,16 +1,23 @@
-import { TestBed } from '@angular/core/testing';
+/**
+ * Copyright (c) 2026 Manuel García Criado
+ * SPDX-License-Identifier: MIT
+ *
+ * Public API Surface of ngx-oauth2-oidc
+ */
 
-import { Oauth2Service } from './oauth2.service';
+import { TestBed } from "@angular/core/testing";
 
-describe('Oauth2Service', () => {
-  let service: Oauth2Service;
+import { Oauth2Service } from "./oauth2.service";
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Oauth2Service);
-  });
+describe("Oauth2Service", () => {
+    let service: Oauth2Service;
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+        service = TestBed.inject(Oauth2Service);
+    });
+
+    it("should be created", () => {
+        expect(service).toBeTruthy();
+    });
 });

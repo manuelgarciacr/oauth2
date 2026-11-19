@@ -5,5 +5,6 @@
  * Public API Surface of ngx-oauth2-oidc
  */
 
-export * from "./lib/ngx-oauth2-oidc.service";
+export { OAUTH2_CONFIG_TOKEN, Oauth2Service } from "./lib/oauth2.service";
 export * from "./lib/ngx-oauth2-oidc.component";
+export { provideOAuth2 } from "./lib/provide-oauth2"

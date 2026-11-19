@@ -1,9 +1,16 @@
+/**
+ * Copyright (c) 2026 Manuel García Criado
+ * SPDX-License-Identifier: MIT
+ *
+ * Public API Surface of ngx-oauth2-oidc
+ */
+
 //import { authorizationGrantType } from "..";
 
-/** Configuration object */
-const configuration = {
-    /** Configuration file label.
-     * You may have multiple configuration files, for identification purposes.
+/** Options section object */
+const options = {
+    /** Config file label.
+     * You may have multiple config files, for identification purposes.
      */
     tag: "",
 
@@ -69,8 +76,7 @@ const configuration = {
     //content_type: "",
 };
 
-/** Configuration object type */
-export interface IOAuth2Configuration extends Partial<typeof configuration> {}
+export const optionsNames = Object.keys(options);
 
-/** Configuration options names */
-export const configurationOptions = Object.keys(configuration);
+/** Options section type */
+export interface IOAuth2Options extends Partial<typeof options> {}

@@ -1,6 +1,6 @@
 {
     "name": "ngx-oauth2-oidc",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "author": "Manuel García Criado <manuel.garcia.cr@hotmail.com>",
     "description": "Angular Service for Oauth2.0 + PKCE + OIDC",
     "license": "MIT",
@@ -20,7 +20,7 @@
     "sideEffects": false,
     "schematics": "./schematics/collection.json",
     "scripts": {
-        "build": "rm -r ../../dist/ngx-oauth2-oidc && tsc -p tsconfig.schematics.json",
+        "build": "rm -rf ../../dist/ngx-oauth2-oidc/schematics && tsc -p tsconfig.schematics.json",
         "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/ngx-oauth2-oidc/",
         "test": "npm run build && jasmine ../../dist/ngx-oauth2-oidc/schematics/**/*_spec.js"
     },
