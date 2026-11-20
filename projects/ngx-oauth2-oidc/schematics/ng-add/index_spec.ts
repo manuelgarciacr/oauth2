@@ -31,7 +31,7 @@ describe("ng-add schematic", () => {
         runner = new SchematicTestRunner("schematics", collectionPath);
     });
 
-    it("[standalone] should add provideNgxOauth2Oidc to main.ts", async () => {
+    it("[standalone] should add provideOauth2 to main.ts", async () => {
         let appTree = await runner.runExternalSchematic(
             "@schematics/angular",
             "workspace",
@@ -53,11 +53,11 @@ describe("ng-add schematic", () => {
             "/projects/my-app/src/app/app.config.ts",
         )!;
 
-        expect(configContent).toContain("provideNgxOauth2Oidc");
+        expect(configContent).toContain("provideOAuth2(");
         expect(configContent).toContain("from 'ngx-oauth2-oidc'");
     });
 
-    it("[NgModule] should add NgxOauth2OidcModule to AppModule", async () => {
+    it("[NgModule] should add provideOauth2 to AppModule", async () => {
         let appTree = await runner.runExternalSchematic(
             "@schematics/angular",
             "workspace",
@@ -79,7 +79,7 @@ describe("ng-add schematic", () => {
             "/projects/my-app/src/app/app.module.ts",
         )!;
 
-        expect(appModule).toContain("NgxOauth2OidcModule");
+        expect(appModule).toContain("provideOAuth2(");
         expect(appModule).toContain("from 'ngx-oauth2-oidc'");
     });
 });

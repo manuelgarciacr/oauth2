@@ -66,6 +66,12 @@ export function ngAdd(options: Schema): Rule {
             return;
         }
 
+        if (options.skipInstall) {
+            context.logger.warn(
+                '👁️  Installation skipped. Run "npm i ngx-oauth2-oidc" manually after this schematic completes.',
+            );
+        }
+
         return addRootProvider(
             options.project,
             ({ code, external }) =>

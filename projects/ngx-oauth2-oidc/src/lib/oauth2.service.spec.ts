@@ -7,17 +7,36 @@
 
 import { TestBed } from "@angular/core/testing";
 
-import { Oauth2Service } from "./oauth2.service";
+import { OAUTH2_CONFIG_TOKEN, Oauth2Service } from "./oauth2.service";
+import { provideOAuth2 } from "../public-api";
 
 describe("Oauth2Service", () => {
     let service: Oauth2Service;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({});
+    it("should be created", () => {
+        TestBed.resetTestingModule();
+        TestBed.configureTestingModule({
+            providers: [
+                provideOAuth2({
+                    options: {},
+                    metadata: {},
+                }),
+            ],
+        });
         service = TestBed.inject(Oauth2Service);
+
+        expect(service).toBeTruthy();
     });
 
-    it("should be created", () => {
+    it("should default to empty config when token is null", () => {
+        TestBed.resetTestingModule();
+        TestBed.configureTestingModule({
+            providers: [
+                Oauth2Service,
+                { provide: OAUTH2_CONFIG_TOKEN, useValue: null },
+            ],
+        });
+        const service = TestBed.inject(Oauth2Service);
         expect(service).toBeTruthy();
     });
 });
